@@ -1,16 +1,22 @@
-## Hi there 👋
+# Badre Abderrahmane Alloul
 
-<!--
-**BadibossPy/BadibossPy** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**GeoAI & Hydrology Engineer** – Geospatial Data, Remote Sensing, and GeoSaaS
 
-Here are some ideas to get you started:
+I build production-grade geospatial and GeoAI systems for water, climate, and infrastructure.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Portfolio
+
+View my complete portfolio at: [index.html](./index.html)
+
+## Core Focus
+
+- GeoAI and spatial machine learning
+- Hydrology and flood risk modeling
+- Remote sensing analysis (Sentinel, ERA5)
+- Energy systems and electrification planning
+- GeoSaaS platform architecture
+
+## Contact
+
+- GitHub: [@BadibossPy](https://github.com/BadibossPy)
+- LinkedIn: [badre-alloul](https://www.linkedin.com/in/badre-alloul)

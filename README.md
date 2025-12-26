@@ -1,65 +1,43 @@
 # Badre Abderrahmane Alloul
-### Geospatial Data Scientist | GeoAI & Hydrology Engineer
 
-Scaling geospatial intelligence to advance sustainable infrastructure, climate resilience, and energy access. 
+**Geospatial Data Scientist & Computational Hydrologist**  
+*Turning research prototypes into production-grade spatial systems.*
 
----
-
-### ◈ Core Thesis
-I build production-grade systems where **Hydrology meets Machine Learning**. My work focuses on transforming multi-terabyte satellite and climate datasets into actionable decision tools for global infrastructure.
-
-- **Philosophy**: 0 fluff, high-signal engineering.
-- **Goal**: Transitioning research prototypes into scalable, high-performance geospatial pipelines.
-- **Focus**: Flood risk, hydropower optimization, and rural electrification (MENA/Europe).
+[![Portfolio](https://img.shields.io/badge/View_Full_Portfolio-00d4aa?style=for-the-badge&logo=google-earth&logoColor=white)](https://badibosspy.github.io)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077b5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
+[![Email](https://img.shields.io/badge/Email-Contact_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
 
 ---
 
-### ◈ Thematic Expertise
+### ◈ What I Do
 
-#### 1. GeoAI & Remote Sensing
-Engineering deep learning workflows for environmental monitoring in arid and temperate regions.
-- **Vision**: Arid land monitoring (Sentinel-2) and building footprint segmentation (U-Net).
-- **Scale**: Dask/xarray pipelines processing **10+ TB/month** on SLURM clusters.
-- **Performance**: Cutting analysis turnaround from days to hours using chunked lazy evaluation.
+I build scalable, automated workflows for **flood modeling**, **climate risk analytics**, and **energy infrastructure planning**. My work bridges the gap between scientific code (notebooks, prototypes) and reliable production systems (pipelines, APIs, dashboards).
 
-#### 2. Computational Hydrology
-Modeling the intersection of water and risk.
-- **Precision**: Calibrating HEC-HMS/Wflow models to **NSE > 0.85**.
-- **Extreme Value**: Building IDF curves for ungauged basins using GEV/Gumbel distributions.
-- **Operational**: Real-time hydropower forecasting (4GW portfolio) using SCADA/ERA5 fusion.
+### ◈ Core Expertise
 
-#### 3. Energy Systems & GeoSaaS
-Optimizing energy access through geospatial analytics.
-- **Optimization**: OnSSET-based least-cost electrification for off-grid sites.
-- **Architecture**: S3-based flood-risk data lakes with STAC catalogs and COG rasters.
-- **Serving**: Sub-500ms PostGIS spatial queries for production-grade REST APIs (FastAPI).
+| Domain | Focus Areas |
+| :--- | :--- |
+| **Computational Hydrology** | Flood risk modeling, dam safety analytics, hydrological simulation (Wflow-SBM, HEC-HMS). |
+| **Energy Systems** | Hydropower optimization, renewable site suitability, off-grid electrification planning (OnSSET). |
+| **Geospatial Engineering** | High-performance raster/vector processing, spatial databases, and automated mapping pipelines. |
 
----
+### ◈ Technical Stack
 
-### ◈ Technical Blueprint
+*   **Geospatial**: `GeoPandas` `Rasterio` `GDAL` `QGIS` `PostGIS` `Shapely`
+*   **Computation**: `Dask` `xarray` `NumPy` `Pandas` `SciPy`
+*   **Infrastructure**: `AWS (S3, Lambda)` `Docker` `SLURM` `FastAPI`
+*   **Remote Sensing**: `Sentinel-2` `TorchGeo` `U-Net` `STAC` `COG`
 
-```python
-{
-    "Computation": ["Dask", "xarray", "NumPy", "SciPy", "Pandas"],
-    "Spatial_Engine": ["GeoPandas", "Shapely", "Fiona", "PyQGIS"],
-    "Data_IO": ["GDAL/OGR", "Rasterio", "STAC", "COG", "NetCDF/GRIB"],
-    "Intelligence": ["scikit-learn", "XGBoost", "TorchGeo (U-Net)", "OpenCV"],
-    "Infrastructure": ["PostGIS", "BigQuery", "AWS (Lambda/S3)", "Docker", "SLURM"]
-}
-```
+### ◈ Selected Experience
+
+*   **INRAe** (2025): Optimized nationwide flood damage analysis, reducing processing time from days to hours using Dask/SLURM.
+*   **REOR20** (2023–2025): Architected a serverless flood-risk data lake and automated country-scale DEM processing pipelines.
+*   **ENGIE / CNR** (2021–2023): Built operational forecasting tools for a 4GW hydropower portfolio and renewable energy site selection systems.
+*   **ANBT** (2019–2020): Designed the foundational spatial database for 150+ dams to support national water resource planning.
 
 ---
 
-### ◈ Highlighted Work
-- **[GEO-AI-Vision-for-Saudi-Arabia](https://github.com/BadibossPy/GEO-AI-Vision-for-Saudi-Arabia)**: Deep learning pipeline for environmental monitoring in arid regions.
-- **[Benin Electrification Analysis](https://github.com/BadibossPy/benin-least-cost)**: Least-cost electrification modeling for infrastructure planning.
-- **Miyahthon Water Hackathon (2nd Place)**: Rapid-prototyping of hydroelectric optimization models.
+> *"Precision is the only substitute for scale."*
 
----
+[**Explore my full portfolio & interactive projects →**](https://badibosspy.github.io)
 
-### ◈ Contact
-- **Email**: [badrallouldjazairi@gmail.com](mailto:badrallouldjazairi@gmail.com)
-- **LinkedIn**: [Badre Abderrahmane Alloul](https://linkedin.com/in/badre-abderrahmane-alloul)
-- **Location**: Lyon, France | Open to Global Challenges.
-
-*"Precision is the only substitute for scale."*

@@ -1,6 +1,6 @@
 # Badre Abderrahmane Alloul
 **Geospatial Data Scientist & Computational Hydrologist**  
-*From research notebooks to production systems: flood, climate, energy.*
+*From research notebooks to production systems: water, agriculture, flood, climate, energy.*
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-badibosspy.github.io-00d4aa?style=for-the-badge&logo=google-earth&logoColor=white)](https://badibosspy.github.io)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077b5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
@@ -9,7 +9,7 @@
 ---
 
 ## What I actually do
-I design and ship geospatial workflows that withstand production: flood-risk models, climate data pipelines, and energy-infrastructure analytics. Everything is tested, containerized, and documented.
+I design and ship geospatial workflows that withstand production: flood-risk models, climate data pipelines, and energy-infrastructure analytics. I test, containerize, and documente.
 
 ## Core capability map
 | Domain | What I deliver |

@@ -23,6 +23,8 @@
             --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
             --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
             --spacing-unit: 8px;
+            --opacity-default: 0.8;
+            --opacity-hover: 1;
         }
 
         body {
@@ -495,7 +497,9 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" 
+            integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb" 
+            crossorigin="anonymous"></script>
     <script>
         // Time Series Chart: Hydropower Production vs Inflow
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -659,17 +663,20 @@
             rect.setAttribute('fill', riskColors[region.risk]);
             rect.setAttribute('stroke', '#ffffff');
             rect.setAttribute('stroke-width', '2');
-            rect.setAttribute('opacity', '0.8');
+            rect.setAttribute('opacity', getComputedStyle(document.documentElement).getPropertyValue('--opacity-default').trim() || '0.8');
             
             const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
             title.textContent = `${region.name}: ${riskLabels[region.risk]} Risk`;
             rect.appendChild(title);
             
+            const opacityDefault = getComputedStyle(document.documentElement).getPropertyValue('--opacity-default').trim() || '0.8';
+            const opacityHover = getComputedStyle(document.documentElement).getPropertyValue('--opacity-hover').trim() || '1';
+            
             rect.addEventListener('mouseenter', function() {
-                this.setAttribute('opacity', '1');
+                this.setAttribute('opacity', opacityHover);
             });
             rect.addEventListener('mouseleave', function() {
-                this.setAttribute('opacity', '0.8');
+                this.setAttribute('opacity', opacityDefault);
             });
             
             svg.appendChild(rect);

@@ -67,7 +67,7 @@ graph LR
 ![xarray](https://img.shields.io/badge/xarray/Dask-00d4aa?style=flat-square) 
 ![ScikitLearn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
 
-#### �️ Data Architect & Storage
+####  Data Architect & Storage
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white) 
 ![PostGIS](https://img.shields.io/badge/PostGIS_Expert-336791?style=flat-square&logo=postgis&logoColor=white) 
 ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4?style=flat-square&logo=googlecloud&logoColor=white) 

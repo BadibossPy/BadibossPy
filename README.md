@@ -1,5 +1,4 @@
 # Badre Abderrahmane Alloul
-**Architecting the Digital Watershed**  
 *Scalable Environmental Intelligence | Computational Hydrology | Geospatial Systems Engineering*
 
 [![Portfolio](https://img.shields.io/badge/Portfoilo-00d4aa?style=for-the-badge&logo=google-earth&logoColor=white)](https://badibosspy.github.io)
@@ -8,14 +7,14 @@
 
 ---
 
-### � The Physics of Data
+### The Physics of Data
 Engineering at the intersection of planetary physics and high-performance software. My work is not about creating drafts; it is about building **systems of record** for the e-water and energy sectors. 
 
 With a foundation in **Hydroinformatics** and **Numerical Simulation** (ENSE3/ENSH), I translate the complex dynamics of rivers and climate into robust, production-grade architectures. My design philosophy is simple: **Precision at Scale**. If a system cannot handle multi-TB datasets with sub-second latency, it is not yet finished.
 
 ---
 
-### 🏗️ The Digital Watershed: System Topology
+### The Digital Watershed: System Topology
 *Visualizing the flow from raw observations to operational intelligence.*
 
 ```mermaid
@@ -47,7 +46,7 @@ graph LR
 
 ---
 
-### 🎯 Knowledge Pillars & Distribution
+### Knowledge Pillars & Distribution
 *Domain depth across the full-stack of environmental simulation.*
 
 | Pillar | Focus Area | Knowledge Density |

@@ -1,69 +1,94 @@
 # Badre Abderrahmane Alloul
 **Geospatial Software Engineer & Computational Hydrologist**  
-*Building technical systems for water, energy, and agricultural sectors.*
+*Environmental Intelligence | Multi-Disciplinary Systems Design | Lyon, France*
 
 [![Portfolio](https://img.shields.io/badge/Architecture_Portfolio-00d4aa?style=for-the-badge&logo=google-earth&logoColor=white)](https://badibosspy.github.io)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077b5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
-[![Email](https://img.shields.io/badge/Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
+[![Email](https://img.shields.io/badge/Scientific_Collaborate-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
 
 ---
 
-### 🌐 Professional Focus
-I design and deploy software systems that solve physical-world problems. My background in **Hydroinformatics** and **Numerical Simulation** allows me to bridge the gap between scientific modeling and production-grade software engineering. I focus on building reliable workflows for large-scale environmental data analysis.
-
----
-
-### ⚙️ Engineering Workflow
-*A simplified view of how I move from raw data to operational systems.*
+### 🌐 Unified Environmental Observation System (UEOS)
+I engineer architectures that bridge the gap between **Physical Simulation** and **Artificial Intelligence**. My workspace is a multi-layered topology where multi-spectral satellite signals converge with numerical PDE solvers to create actionable environmental foresight.
 
 ```mermaid
-graph LR
-    A[Data Acquisition] --> B[Processing & Modeling]
-    B --> C[Infrastructure & Storage]
-    C --> D[Operational Deployment]
-
-    subgraph "Details"
-        A --- A1[Satellite / Climate / Sensors]
-        B --- B1[Numerical Models / Deep Learning]
-        C --- C1[PostGIS / Cloud Native / HPC]
-        D --- D1[APIs / Decision Tools]
+graph TD
+    subgraph "I. DATA ASSIMILATION LAYER"
+        A1[(Sentinel Multi-Spectral)]
+        A2[(ERA5/CMIP6 Reanalysis)]
+        A3[(In-Situ Sensor Networks)]
     end
 
-    style A fill:#0c0c0f,stroke:#00d4aa,stroke-width:1px;
-    style B fill:#0c0c0f,stroke:#00d4aa,stroke-width:1px;
-    style C fill:#0c0c0f,stroke:#00d4aa,stroke-width:1px;
-    style D fill:#0c0c0f,stroke:#00d4aa,stroke-width:1px;
+    subgraph "II. INTELLIGENCE & INFERENCE"
+        B1{Latent Space Mapping}
+        B2[Computer Vision: U-Net / SAM]
+        B3[Physics-Informed ML]
+        B4[Numerical Fluid Dynamics]
+    end
+
+    subgraph "III. SCALABLE ORCHESTRATION"
+        C1[Dask / xarray / SLURM]
+        C2[Cloud-Native Pipelines: COG/STAC]
+    end
+
+    subgraph "IV. KNOWLEDGE DELIVERY"
+        D1[High-Frequency Hazard Mapping]
+        D2[Resource Optimization: Water/Energy/Ag]
+    end
+
+    A1 & A2 & A3 --> B1
+    B1 --> B2 & B3 & B4
+    B2 & B3 & B4 --> C1
+    C1 --> C2
+    C2 --> D1 & D2
+
+    style B1 fill:#0c0c0f,stroke:#00d4aa,stroke-width:2px;
+    style C1 fill:#0c0c0f,stroke:#00d4aa,stroke-width:2px;
 ```
 
 ---
 
-### �️ Toolbox & Skills
-
-#### Geospatial & Remote Sensing
-- **Libraries**: `GDAL/OGR`, `Rasterio`, `GeoPandas`, `Fiona`, `Shapely`.
-- **Platforms**: `QGIS (PyQGIS)`, `Google Earth Engine`, `STAC/COG`.
-- **Analysis**: Spectral indices, change detection, and spatial optimization.
-
-#### Simulation & Domain Modeling
-- **Hydrology/Hydraulics**: `Wflow-SBM`, `TELEMAC-2D`, `ANUGA`, `HEC-HMS`, `HEC-RAS`.
-- **Infrastructure**: Least-cost energy planning, hydropower optimization, and dam safety.
-- **Statistics**: Extreme value analysis and bias correction methods.
-
-#### Software & Cloud Engineering
-- **Languages**: `Python` (NumPy, SciPy, xarray, Dask), `SQL`, `Bash`.
-- **DevOps**: `Docker`, `SLURM (HPC)`, `Git / GitHub Actions`, `Linux`.
-- **Cloud**: `AWS (S3, Lambda)`, `BigQuery`, Serverless geospatial architectures.
-
-#### Recent Technical Interests
-- Developing **Deep Learning** pipelines for satellite imagery segmentation (TorchGeo).
-- Scaling **Cloud-Native** geospatial data lakes for low-latency queries.
-- Optimizing distributed computing for multi-terabyte environmental datasets.
+### 🔬 Emerging Frontiers & Research Focus
+Currently accelerating at the intersection of **Physics** and **Deep Learning**:
+- **Geo-AI & Computer Vision**: Scaling **TorchGeo** and segmentation models (U-Net, DeepLabv3+) for automated landscape classification and change detection.
+- **Physics-Informed ML (PIML)**: Integrating hydrological constraints into stochastic models to achieve better extrapolation in climate-scarcity scenarios.
+- **Cloud-Native Scalability**: Architecting distributed workflows for multi-TB datasets (S3, BigQuery, Dask) to minimize latency in global-reach applications.
 
 ---
 
-### 📐 Engineering Approach
-I prioritize **reproducibility** and **scalability**. Whether I am modeling a river basin or architecting a data pipeline, my goal is to create systems that are accurate, maintainable, and efficient.
+### 🔧 Technological Arsenal
 
-[**Full Portfolio →**](https://badibosspy.github.io) • [**Connectivity →**](https://linkedin.com/in/badre-abderrahmane-alloul)
+#### 🌍 Geospatial & Remote Sensing
+![GDAL](https://img.shields.io/badge/GDAL/OGR-00d4aa?style=flat-square&logo=gdal&logoColor=white) 
+![Rasterio](https://img.shields.io/badge/Rasterio-00d4aa?style=flat-square) 
+![GeoPandas](https://img.shields.io/badge/GeoPandas-00d4aa?style=flat-square) 
+![QGIS](https://img.shields.io/badge/QGIS/PyQGIS-00d4aa?style=flat-square&logo=qgis&logoColor=white) 
+![GEE](https://img.shields.io/badge/Google_Earth_Engine-00d4aa?style=flat-square&logo=google&logoColor=white) 
+![STAC](https://img.shields.io/badge/STAC/COG-00d4aa?style=flat-square)
 
-> *"The quality of a model is defined by its utility and the reliability of the system that serves it."*
+#### 🌊 Water, Energy & Agriculture
+- **Simulation**: `Wflow-SBM` `TELEMAC-2D` `ANUGA` `HEC-HMS` `HEC-RAS`.
+- **Optimization**: `OnSSET` `Hydropower Cascade Modeling` `MCDA Site Suitability`.
+- **Analysis**: `Extreme Value Stats (GEV)` `IDF Automation` `Vegetation Indices (NDVI/EVI)`.
+
+#### 🤖 Advanced Computing & Data
+![Python](https://img.shields.io/badge/Python_Expert-3776AB?style=flat-square&logo=python&logoColor=white) 
+![PyTorch](https://img.shields.io/badge/PyTorch/TorchGeo-EE4C2C?style=flat-square&logo=pytorch&logoColor=white) 
+![xarray](https://img.shields.io/badge/xarray/Dask-00d4aa?style=flat-square) 
+![Docker](https://img.shields.io/badge/Docker/Singularity-2496ED?style=flat-square&logo=docker&logoColor=white) 
+![SLURM](https://img.shields.io/badge/SLURM_HPC-00d4aa?style=flat-square)
+
+#### 🗄️ Spatial Databases & Cloud
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white) 
+![PostGIS](https://img.shields.io/badge/PostGIS-336791?style=flat-square&logo=postgis&logoColor=white) 
+![BigQuery](https://img.shields.io/badge/BigQuery-4285F4?style=flat-square&logo=googlecloud&logoColor=white) 
+![AWS](https://img.shields.io/badge/AWS_Ops-232F3E?style=flat-square&logo=amazonwebservices&logoColor=white)
+
+---
+
+### 🎨 Design Philosophy: The Digital Synthesis
+Complexity in the natural world requires simplicity in code. I design systems to be **Reproducible, Scalable, and Observable**. My motivation is to build the digital synthesis between the physical world and computational intelligence.
+
+[**Full Architecture Portfolio →**](https://badibosspy.github.io) • [**Professional Connectivity →**](https://linkedin.com/in/badre-abderrahmane-alloul)
+
+> *"The future of physical engineering is a high-resolution simulation of reality."*

@@ -1,60 +1,80 @@
 # Badre Abderrahmane Alloul
-**Geospatial Software Engineer & Computational Hydrologist**  
-*Building scalable environmental intelligence systems | Lyon, France*
+**Architecting the Digital Watershed**  
+*Scalable Environmental Intelligence | Computational Hydrology | Geospatial Systems Engineering*
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-badibosspy.github.io-00d4aa?style=for-the-badge&logo=google-earth&logoColor=white)](https://badibosspy.github.io)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077b5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
-[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Portfoilo-00d4aa?style=for-the-badge&logo=google-earth&logoColor=white)](https://badibosspy.github.io)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077b5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
 
 ---
 
-### 🏗️ Geospatial Systems Architecture
-I design data engines that transform raw planetary observations into decision-ready insights. My focus is on **Engineering over Drafting**—deploying automated, high-performance pipelines instead of manual 2D CAD workflows.
+### � The Physics of Data
+Engineering at the intersection of planetary physics and high-performance software. My work is not about creating drafts; it is about building **systems of record** for the e-water and energy sectors. 
+
+With a foundation in **Hydroinformatics** and **Numerical Simulation** (ENSE3/ENSH), I translate the complex dynamics of rivers and climate into robust, production-grade architectures. My design philosophy is simple: **Precision at Scale**. If a system cannot handle multi-TB datasets with sub-second latency, it is not yet finished.
+
+---
+
+### 🏗️ The Digital Watershed: System Topology
+*Visualizing the flow from raw observations to operational intelligence.*
 
 ```mermaid
 graph LR
-    A[(Satellite: S2/L8)] --> B{Dask/xarray}
-    C[(Climate: ERA5)] --> B
-    B --> D[Bias Correction / QA]
-    D --> E[(PostGIS / COG)]
-    E --> F[FastAPI / PyQGIS]
-    F --> G[Real-time Hazard Mapping]
+    subgraph "Raw Observations"
+        A[(Sentinel-1/2)]
+        B[(ERA5/CMIP6)]
+    end
+    
+    subgraph "The Engine"
+        C{Dask / xarray / SLURM}
+        D[Bias Correction / JIT Optimization]
+    end
+    
+    subgraph "The Ecosystem"
+        E[(PostGIS / STAC / COG)]
+        F[FastAPI / PyQGIS]
+    end
+    
+    A & B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G[Operational Insights]
+    
+    style C fill:#0c0c0f,stroke:#00d4aa,stroke-width:2px;
+    style E fill:#0c0c0f,stroke:#00d4aa,stroke-width:2px;
 ```
 
 ---
 
-### 🎯 Domain Expertise Distribution
-*Quantifying the impact areas of my engineering workflows.*
+### 🎯 Knowledge Pillars & Distribution
+*Domain depth across the full-stack of environmental simulation.*
 
-| Domain | Proficiency | Core Focus |
+| Pillar | Focus Area | Knowledge Density |
 | :--- | :--- | :--- |
-| **Computational Hydrology** | `████████░░ 80%` | Wflow-SBM, HEC-HMS, TELEMAC-2D, Statistical/Extreme value analysis. |
-| **Energy & Infrastructure** | `██████░░░░ 60%` | Hydropower optimization, OnSSET least-cost planning, cascade modeling. |
-| **Geospatial AI & RS** | `██████░░░░ 60%` | TorchGeo segmentation, spectral indices (NDVI/NBR), multi-TB pipelines. |
-| **Software & Cloud Ops** | `████░░░░░░ 40%` | Docker/Singularity, SLURM HPC, FastAPI, Pydantic validation. |
+| **Continental Hydrology** | Flood Risk, Wflow-SBM, WMS/WFS, Extreme Stats | `████████░░ 80%` |
+| **Energy Infrastructure** | Hydropower, OnSSET, Cascade Opt, Renewables | `████████░░ 75%` |
+| **Geospatial Engineering** | PostGIS, GeoAI, STAC/COG, Rasterio/GDAL | `███████░░░ 70%` |
+| **Software Infrastructure** | Python, FastAPI, Docker/SLURM, CI/CD | `██████░░░░ 65%` |
 
 ---
 
-### 🔬 Technical Rigor & Selected Outcomes
-- **National Flood Analytics (INRAe 2025)**: Modularized research prototypes into production Python packages. Scaled processing from days to hours using chunked Dask workloads on SLURM clusters.
-- **Serverless Flood Data Lake (REOR20)**: Architected an S3-native infrastructure using **STAC** and **Cloud Optimized Geotiffs (COG)** to serve sub-second hazard queries via FastAPI.
-- **4GW Hydropower Portfolio (ENGIE)**: Engineered operational forecasting systems integrating SCADA/ERA5 data. Developed dam-release optimizers using Bayesian tuning and Numba JIT for 80% compute reduction.
-- **Spatio-Temporal Optimization**: Led the design of a national PostGIS schema for **150+ dams**, delivering low-latency spatial indexing (GiST) for multi-user GIS environments.
+### 🔬 High-Signal Deployments
+- **National Flood Protection (INRAe)**: Productionized research prototypes into hardened Python packages. Cut processing cycles from days to hours on SLURM clusters.
+- **4GW Hydropower Portfolio (ENGIE)**: Built operational forecasting systems integrating SCADA and ERA5. Delivered 80% compute reduction via Numba JIT and Bayesian optimizers.
+- **Serverless Analytics (REOR20)**: Architected an S3-native data lake with STAC indexing for sub-second hazard queries across global datasets.
+- **National Dam Database (ANBT)**: Designed high-performance PostGIS schemas for 150+ major dams; implemented GiST indexing for real-time spatial joins.
 
 ---
 
-### 🔧 The Architect's Stack
-- **Languages**: Python (NumPy, SciPy, xarray, Dask), SQL, Bash, Lua.
-- **Geospatial**: Rasterio, GDAL/OGR, GeoPandas, Shapely, PyQGIS (PyQt), Google Earth Engine.
-- **Simulation**: TELEMAC-2D, ANUGA, HEC-RAS, HEC-HMS, Wflow-SBM.
-- **Infrastructure**: SLURM (500+ job orchestration), Docker, AWS (S3/Lambda/EC2), CI/CD.
+### �️ Tools of the Trade
+- **Computation**: `Python (NumPy, SciPy, xarray, Dask)` `Numba` `SQL` `Lua`.
+- **Simulation**: `TELEMAC-2D` `ANUGA` `HEC-HMS` `Wflow-SBM` `LISFLOOD-FP`.
+- **Geospatial**: `PostGIS` `Rasterio` `GDAL/OGR` `PyQGIS` `TorchGeo` `ArcPy`.
+- **Ops/Cloud**: `SLURM` `Docker` `AWS (S3/Lambda/EC2)` `GitHub Actions`.
 
 ---
 
-### 🚀 Motivation: Scaling Environmental Intelligence
-I bridge the gap between scientific modeling and scalable production. My commitment is to **observable, reproducible, and verifiable engineering**.
+[**Explore the Portfolio**](https://badibosspy.github.io) • [**Technical Writing**](https://linkedin.com/in/badre-abderrahmane-alloul)
 
-[**Deep-dive into my work →**](https://badibosspy.github.io) • [**Connectivity →**](https://linkedin.com/in/badre-abderrahmane-alloul)
-
-> *"Precision at scale is an engineering problem, not a drafting task."*
-
+> *"Scalability is the only true validation of precision."*

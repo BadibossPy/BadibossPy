@@ -12,40 +12,52 @@
 I engineer architectures that bridge the gap between **Physical Simulation** and **Artificial Intelligence**. My workspace is a multi-layered topology where multi-spectral satellite signals converge with numerical PDE solvers to create actionable environmental foresight.
 
 ```mermaid
-graph TD
-    subgraph "I. DATA ASSIMILATION LAYER"
-        A1[(Sentinel Multi-Spectral)]
-        A2[(ERA5/CMIP6 Reanalysis)]
-        A3[(In-Situ Sensor Networks)]
+flowchart TD
+    %% LAYER 1: INGESTION
+    subgraph DATA_INGESTION ["1. DATA INGESTION (Immutable, Versioned)"]
+        D1[Raw Satellite Data]
+        D2[In-situ Sensors]
+        D3[3rd-party Archives]
     end
 
-    subgraph "II. INTELLIGENCE & INFERENCE"
-        B1{Latent Space Mapping}
-        B2[Computer Vision: U-Net / SAM]
-        B3[Physics-Informed ML]
-        B4[Numerical Fluid Dynamics]
+    %% LAYER 2: CANONICAL STORAGE
+    subgraph CANONICAL_STORAGE ["2. CANONICAL DATA STORE (Schema-Driven, Manifested)"]
+        S1[Immutable Dataset (CF-NetCDF / GeoParquet)]
+        S2[Dataset Manifest<br/>(YAML/JSON Schema)]
     end
 
-    subgraph "III. SCALABLE ORCHESTRATION"
-        C1[Dask / xarray / SLURM]
-        C2[Cloud-Native Pipelines: COG/STAC]
+    %% LAYER 3: TRANSFORMATION ENGINE
+    subgraph FUNC_TRANSFORM ["3. FUNCTIONAL TRANSFORMATION ENGINE"]
+        F1[Pure Functions<br/>(Physics, ML, Regridding, Bias Correction)]
+        F2[Function Manifest<br/>(IO Types, Provenance Graph)]
     end
 
-    subgraph "IV. KNOWLEDGE DELIVERY"
-        D1[High-Frequency Hazard Mapping]
-        D2[Resource Optimization: Water/Energy/Ag]
+    %% LAYER 4: WORKFLOW ORCHESTRATOR
+    subgraph ORCHESTRATOR ["4. DAG ORCHESTRATOR (Declarative, Deterministic)"]
+        O1[Workflow Spec<br/>(YAML Pipeline)]
+        O2[Observed Execution<br/>(Versioned Output)]
     end
 
-    A1 & A2 & A3 --> B1
-    B1 --> B2 & B3 & B4
-    B2 & B3 & B4 --> C1
-    C1 --> C2
-    C2 --> D1 & D2
+    %% LAYER 5: END-USER ARTIFACTS
+    subgraph KNOWLEDGE_PRODUCTS ["5. KNOWLEDGE PRODUCTS (Queryable, Auditable)"]
+        K1[Analysis Results<br/>(Hazard Maps, Time Series)]
+        K2[Auto-generated Docs & Provenance]
+        K3[Web/Notebook API]
+    end
 
-    style B1 fill:#0c0c0f,stroke:#00d4aa,stroke-width:2px;
-    style C1 fill:#0c0c0f,stroke:#00d4aa,stroke-width:2px;
+    %% EDGES
+    D1 & D2 & D3 --> S1
+    S1 --> S2
+    S2 --> F1
+    F1 --> F2
+    F2 --> O1
+    O1 --> O2
+    O2 --> K1 & K2 & K3
+
+    %% ACCENT NOTES
+    classDef accent fill:#eef8fc,stroke:#00d4aa,stroke-width:2px;
+    class DATA_INGESTION,CANONICAL_STORAGE,FUNC_TRANSFORM,ORCHESTRATOR,KNOWLEDGE_PRODUCTS accent;
 ```
-
 ---
 
 ### 🔬 Emerging Frontiers & Research Focus

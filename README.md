@@ -1,107 +1,77 @@
-# Badre Abderrahmane Alloul
-**Geospatial Software Engineer & Computational Hydrologist**  
-*Environmental Intelligence | Scientific Systems Architecture | Lyon, France*
+### Badre Abderrahmane Alloul
+**Computational Hydrologist & Geospatial Systems Architect**
+*Lyon, France*
 
-[![Portfolio](https://img.shields.io/badge/Architecture_Portfolio-00d4aa?style=for-the-badge&logo=google-earth&logoColor=white)](https://badibosspy.github.io)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077b5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
-[![Email](https://img.shields.io/badge/Scientific_Collaborate-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
-
----
-
-### 🌍 Turning Multi-Disciplinary Data into Applied Environmental Intelligence
-
-I create unified architectures that bridge **satellite earth observation**, **numerical simulation**, and **AI-powered analytics**. My work translates massive, heterogeneous climate and geospatial datasets into actionable intelligence for hazard mitigation, resilience, and high-impact decision-making.
-
-#### **What sets my approach apart?**
-- **Full-Stack Impact:** From scientific code refactoring and spatial DB design, to delivering scalable, cloud-ready geospatial platforms for climate risk and energy systems (INRAe, ENGIE, REOR20 AG).
-- **Tech-Leading Pipelines:** Architect reliable data workflows—CDO/NCO, xarray, Dask, cloud-native ETL—integrating everything from API-driven ingestion to on-prem HPC simulation and real-world dashboarding.
-- **Open Science & Collaboration:** I champion reproducibility and open standards, maintain OSS tooling, and foster knowledge transfer across R&D and industry collaborations.
+[![Portfolio](https://img.shields.io/badge/Methodology-Documentation-000000?style=for-the-badge&logo=github)](https://badibosspy.github.io)
+[![LinkedIn](https://img.shields.io/badge/Network-0077b5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
+[![Email](https://img.shields.io/badge/Signal-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
 
 ---
 
-### 🌐 Unified Environmental Observation System (UEOS)
+### I. The Computational Synthesis
 
-I engineer architectures that bridge the gap between **Physical Simulation** and **Artificial Intelligence**. My workspace is a multi-layered topology where multispectral satellite signals converge with numerical PDE solvers to produce environmental foresight.
+I engineer the convergence of **deterministic physical modeling** and **stochastic machine learning**. My work focuses on replacing heuristic environmental workflows with rigorous, scalable computational pipelines. I build systems where satellite telemetry (Sentinel/Landsat) forces partial differential equations (PDEs) in real-time, bridging the gap between observation and simulation.
+
+**Core Thesis:** The future of hydrology is not in static reporting, but in **digital twins**—live, auto-calibrating representations of physical systems running on high-performance infrastructure.
+
+### II. System Architecture & Topology
+
+My approach treats environmental data as a distributed systems problem. I design architectures that handle the velocity and heterogeneity of Earth Observation (EO) data without compromising physical consistency.
 
 ```mermaid
-graph TD
-    subgraph "I. DATA ASSIMILATION LAYER"
-        A1[(Sentinel Multi-Spectral)]
-        A2[(ERA5/CMIP6 Reanalysis)]
-        A3[(In-Situ Sensor Networks)]
+flowchart LR
+    subgraph L1 ["Data Assimilation (State Space)"]
+        direction TB
+        S[Sentinel-1/2 SAR/MSI]
+        E[ERA5 Reanalysis]
+        I[In-Situ Telemetry]
     end
 
-    subgraph "II. INTELLIGENCE & INFERENCE"
-        B1{Latent Space Mapping}
-        B2[Computer Vision: U-Net / SAM]
-        B3[Physics-Informed ML]
-        B4[Numerical Fluid Dynamics]
+    subgraph L2 ["Computational Core"]
+        direction TB
+        Tensor[Tensor-Based Fusion]
+        Phy[Physics-Informed Neural Operator]
+        Num[Numerical Solvers (FVM/FDM)]
     end
 
-    subgraph "III. SCALABLE ORCHESTRATION"
-        C1[Dask / xarray / SLURM]
-        C2[Cloud-Native Pipelines: COG/STAC]
+    subgraph L3 ["Orchestration & Scale"]
+        direction TB
+        Dask[Dask Distributed]
+        Zarr[Zarr/Cloud-Optimized GeoTIFF]
+        GPU[CUDA/SLURM Kernels]
     end
 
-    subgraph "IV. KNOWLEDGE DELIVERY"
-        D1[High-Frequency Hazard Mapping]
-        D2[Resource Optimization: Water/Energy/Ag]
-    end
+    L1 -->|ETL & Normalization| Tensor
+    Tensor -->|Latent Representation| Phy
+    Phy -->|Residual Correction| Num
+    Num -->|State Vector| Dask
+    Dask -->|Parallel Write| Zarr
 
-    A1 & A2 & A3 --> B1
-    B1 --> B2 & B3 & B4
-    B2 & B3 & B4 --> C1
-    C1 --> C2
-    C2 --> D1 & D2
-
-    style B1 fill:#0c0c0f,stroke:#00d4aa,stroke-width:2px;
-    style C1 fill:#0c0c0f,stroke:#00d4aa,stroke-width:2px;
+    style L2 fill:#0d1117,stroke:#3fb950,stroke-width:2px,color:#fff
+    style Phy stroke:#d2a8ff,stroke-width:2px
 ```
 
----
+### III. Technical Specification
 
-### 🔬 Research Frontiers & R&D Focus
+I operate at the kernel level of geospatial engineering, focusing on memory efficiency, vectorization, and reproducibility.
 
-Accelerating at the intersection of **Physics, Geospatial Science, and AI**:
-- **Geo-AI & Computer Vision:** Scaling TorchGeo/segmentation (U-Net, DeepLabv3+) for automated change detection and landscape mapping.
-- **Physics-Informed ML (PIML):** Embedding hydrological/physical constraints into deep models for robust, interpretable predictions in climate-vulnerable contexts.
-- **Cloud-Native & HPC Scalability:** Designing distributed pipelines for multi-TB datasets (S3, BigQuery, Dask, SLURM) to power near-real-time, global analytics.
+| Domain | Stack & Implementation Strategy |
+| :--- | :--- |
+| **Geospatial Compute** | **GDAL/OGR C++ bindings**, **Rasterio**, **Shapely**. *Focus: Zero-copy array manipulation, affine transformations, and spatial indexing (R-Tree/Quadtree).* |
+| **Physical Simulation** | **TELEMAC-2D**, **Wflow-SBM**, **HEC-RAS**. *Focus: Coupling hydrodynamic solvers with Python wrappers for automated boundary condition injection.* |
+| **High-Dimensional ML** | **PyTorch (Geometric/Lightning)**, **TorchGeo**. *Focus: U-Net/DeepLabv3+ for semantic segmentation of multispectral imagery; Physics-Informed Neural Networks (PINNs) for solving inverse problems.* |
+| **Data Engineering** | **xarray**, **Dask**, **PostGIS**, **BigQuery**. *Focus: Lazy loading of multi-terabyte climatological datasets; SQL spatial joins optimized for geometry complexity.* |
 
----
+### IV. Selected Engineering Challenges
 
-### 🔧 Technological Arsenal
+1.  **Hydrological Latent Space Mapping:** Moving beyond simple NDVI thresholding by training Convolutional Neural Networks (CNNs) to identify non-linear hydrological features in SAR (Synthetic Aperture Radar) data, resilient to cloud cover.
+2.  **Automated Calibration Pipelines:** Replaced manual parameter estimation in hydrological models (e.g., Manning's *n*) with differentiable programming frameworks, allowing gradient descent to optimize physical parameters against observed streamflow.
+3.  **Cloud-Native Hazard Warning:** Architected serverless pipelines (AWS Lambda/Fargate) that ingest GFS/ECMWF forecasts, execute flood routing models, and push vector tile alerts to frontend clients in <15 minutes latency.
 
-#### 🌍 Geospatial & Remote Sensing
-![GDAL](https://img.shields.io/badge/GDAL/OGR-00d4aa?style=flat-square&logo=gdal&logoColor=white)
-![Rasterio](https://img.shields.io/badge/Rasterio-00d4aa?style=flat-square)
-![GeoPandas](https://img.shields.io/badge/GeoPandas-00d4aa?style=flat-square)
-![QGIS](https://img.shields.io/badge/QGIS/PyQGIS-00d4aa?style=flat-square&logo=qgis&logoColor=white)
-![GEE](https://img.shields.io/badge/Google_Earth_Engine-00d4aa?style=flat-square&logo=google&logoColor=white)
-![STAC](https://img.shields.io/badge/STAC/COG-00d4aa?style=flat-square)
+### V. Philosophy
 
-#### 🌊 Water, Energy & Agriculture
-- **Simulation:** `Wflow-SBM` `TELEMAC-2D` `ANUGA` `HEC-HMS` `HEC-RAS`
-- **Optimization:** `OnSSET` `Hydropower Cascade Modeling` `MCDA Site Suitability`
-- **Analysis:** `Extreme Value Stats (GEV)` `IDF Automation` `Vegetation Indices (NDVI/EVI)`
+> *Code is the modern notation for physical law.*
 
-#### 🤖 Advanced Computing & Data
-![Python](https://img.shields.io/badge/Python_Expert-3776AB?style=flat-square&logo=python&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch/TorchGeo-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![xarray](https://img.shields.io/badge/xarray/Dask-00d4aa?style=flat-square)
-![Docker](https://img.shields.io/badge/Docker/Singularity-2496ED?style=flat-square&logo=docker&logoColor=white)
-![SLURM](https://img.shields.io/badge/SLURM_HPC-00d4aa?style=flat-square)
+I advocate for **Open Science** not just as a principle, but as a requirement for validation. Environmental models must be reproducible, containerized (Docker/Singularity), and version-controlled to withstand scientific scrutiny.
 
-#### 🗄️ Spatial Databases & Cloud
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
-![PostGIS](https://img.shields.io/badge/PostGIS-336791?style=flat-square&logo=postgis&logoColor=white)
-![BigQuery](https://img.shields.io/badge/BigQuery-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS_Ops-232F3E?style=flat-square&logo=amazonwebservices&logoColor=white)
-
----
-
-### 🎨 Design Philosophy: The Digital Synthesis
-The complexity of the natural world is best met with simplicity and clarity in code. My goal: **Reproducible, scalable, observable systems**—building the digital synthesis between physics, data, and intelligence.
-
-[**Explore my Architecture Portfolio →**](https://badibosspy.github.io) • [**Connect on LinkedIn →**](https://linkedin.com/in/badre-abderrahmane-alloul)
-
-> *"The future of environmental engineering is a high-resolution, open simulation of reality."*
+[**View Architecture Portfolio**](https://badibosspy.github.io)

@@ -1,77 +1,83 @@
 ### Badre Abderrahmane Alloul
-**Computational Hydrologist & Geospatial Systems Architect**
+**Geospatial Solutions Architect | Environmental Data Scientist**
 *Lyon, France*
 
-[![Portfolio](https://img.shields.io/badge/Methodology-Documentation-000000?style=for-the-badge&logo=github)](https://badibosspy.github.io)
-[![LinkedIn](https://img.shields.io/badge/Network-0077b5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
-[![Email](https://img.shields.io/badge/Signal-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=github)](https://badibosspy.github.io)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077b5?style=flat-square&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
 
 ---
 
-### I. The Computational Synthesis
+I build **production-grade geospatial systems** that connect Earth Observation data to physical simulation and machine learning. I write the code, design the architecture, and understand the science underneath. 
 
-I engineer the convergence of **deterministic physical modeling** and **stochastic machine learning**. My work focuses on replacing heuristic environmental workflows with rigorous, scalable computational pipelines. I build systems where satellite telemetry (Sentinel/Landsat) forces partial differential equations (PDEs) in real-time, bridging the gap between observation and simulation.
+**What makes me different:** I operate across the full stack—from deriving algorithms grounded in radiative transfer physics, to deploying distributed pipelines on HPC and cloud infrastructure, to optimizing spatial database queries.  Most people specialize in one layer.  I integrate all of them.
 
-**Core Thesis:** The future of hydrology is not in static reporting, but in **digital twins**—live, auto-calibrating representations of physical systems running on high-performance infrastructure.
+---
 
-### II. System Architecture & Topology
-
-My approach treats environmental data as a distributed systems problem. I design architectures that handle the velocity and heterogeneity of Earth Observation (EO) data without compromising physical consistency.
+### System Design
 
 ```mermaid
 flowchart LR
-    subgraph L1 ["Data Assimilation (State Space)"]
-        direction TB
-        S[Sentinel-1/2 SAR/MSI]
-        E[ERA5 Reanalysis]
-        I[In-Situ Telemetry]
+    subgraph Input
+        S[Sentinel / Landsat]
+        E[ERA5 / CMIP6]
+        I[IoT Sensors]
     end
 
-    subgraph L2 ["Computational Core"]
-        direction TB
-        Tensor[Tensor-Based Fusion]
-        Phy[Physics-Informed Neural Operator]
-        Num[Numerical Solvers (FVM/FDM)]
+    subgraph Processing
+        F[Tensor Fusion]
+        M[ML Models]
+        P[Physics Solvers]
     end
 
-    subgraph L3 ["Orchestration & Scale"]
-        direction TB
-        Dask[Dask Distributed]
-        Zarr[Zarr/Cloud-Optimized GeoTIFF]
-        GPU[CUDA/SLURM Kernels]
+    subgraph Infrastructure
+        D[Dask / SLURM]
+        Z[Zarr / COG / STAC]
+        DB[(PostGIS)]
     end
 
-    L1 -->|ETL & Normalization| Tensor
-    Tensor -->|Latent Representation| Phy
-    Phy -->|Residual Correction| Num
-    Num -->|State Vector| Dask
-    Dask -->|Parallel Write| Zarr
-
-    style L2 fill:#0d1117,stroke:#3fb950,stroke-width:2px,color:#fff
-    style Phy stroke:#d2a8ff,stroke-width:2px
+    S --> F
+    E --> F
+    I --> F
+    F --> M
+    M --> P
+    P --> D
+    D --> Z
+    Z --> DB
 ```
 
-### III. Technical Specification
+---
 
-I operate at the kernel level of geospatial engineering, focusing on memory efficiency, vectorization, and reproducibility.
+### Core Competencies
 
-| Domain | Stack & Implementation Strategy |
-| :--- | :--- |
-| **Geospatial Compute** | **GDAL/OGR C++ bindings**, **Rasterio**, **Shapely**. *Focus: Zero-copy array manipulation, affine transformations, and spatial indexing (R-Tree/Quadtree).* |
-| **Physical Simulation** | **TELEMAC-2D**, **Wflow-SBM**, **HEC-RAS**. *Focus: Coupling hydrodynamic solvers with Python wrappers for automated boundary condition injection.* |
-| **High-Dimensional ML** | **PyTorch (Geometric/Lightning)**, **TorchGeo**. *Focus: U-Net/DeepLabv3+ for semantic segmentation of multispectral imagery; Physics-Informed Neural Networks (PINNs) for solving inverse problems.* |
-| **Data Engineering** | **xarray**, **Dask**, **PostGIS**, **BigQuery**. *Focus: Lazy loading of multi-terabyte climatological datasets; SQL spatial joins optimized for geometry complexity.* |
+| Layer | What I Build |
+| : --- | :--- |
+| **Domain Science** | Hydrology, flood modeling, water resource optimization.  I understand the governing equations before writing code. |
+| **Geospatial Engineering** | GDAL, Rasterio, GeoPandas, PostGIS.  Efficient I/O on TB-scale raster and vector datasets.  Spatial indexing, projection handling, format conversion. |
+| **Simulation** | TELEMAC-2D, Wflow, HEC-RAS.  Automating model setup, calibration, and result extraction through Python wrappers. |
+| **Machine Learning** | PyTorch, TorchGeo.  Semantic segmentation on multispectral imagery.  Physics-informed neural networks for hybrid modeling. |
+| **Data Infrastructure** | xarray, Dask, Zarr, BigQuery.  Lazy computation on massive climate archives. Cloud-native formats and catalogs (COG, STAC). |
+| **Platform & DevOps** | Docker, Singularity, SLURM, AWS/GCP.  Reproducible environments from laptop to HPC cluster to serverless cloud. |
 
-### IV. Selected Engineering Challenges
+---
 
-1.  **Hydrological Latent Space Mapping:** Moving beyond simple NDVI thresholding by training Convolutional Neural Networks (CNNs) to identify non-linear hydrological features in SAR (Synthetic Aperture Radar) data, resilient to cloud cover.
-2.  **Automated Calibration Pipelines:** Replaced manual parameter estimation in hydrological models (e.g., Manning's *n*) with differentiable programming frameworks, allowing gradient descent to optimize physical parameters against observed streamflow.
-3.  **Cloud-Native Hazard Warning:** Architected serverless pipelines (AWS Lambda/Fargate) that ingest GFS/ECMWF forecasts, execute flood routing models, and push vector tile alerts to frontend clients in <15 minutes latency.
+### Selected Work
 
-### V. Philosophy
+- **Automated flood forecasting pipeline** — Ingests NWP forecasts, runs hydrodynamic simulation, publishes vector tile alerts.  End-to-end latency under 15 minutes. 
+- **Satellite-based water detection at scale** — CNN trained on Sentinel-1 SAR to map surface water through cloud cover. Deployed on multi-country AOIs.
+- **Differentiable hydrological calibration** — Replaced manual parameter tuning with gradient-based optimization.  Reduced calibration time from weeks to hours.
+- **Climate data platform architecture** — Designed ETL pipelines processing CMIP6/ERA5 archives into analysis-ready Zarr stores for downstream modeling teams.
 
-> *Code is the modern notation for physical law.*
+---
 
-I advocate for **Open Science** not just as a principle, but as a requirement for validation. Environmental models must be reproducible, containerized (Docker/Singularity), and version-controlled to withstand scientific scrutiny.
+### What I Am Looking For
 
-[**View Architecture Portfolio**](https://badibosspy.github.io)
+Roles where **geospatial depth meets software engineering rigor**:  Solutions Architect, Staff Engineer, Principal Data Scientist, or Technical Lead in climate tech, Earth observation, water, energy, or environmental risk. 
+
+I want to build systems that matter—infrastructure that turns planetary-scale data into decisions. 
+
+---
+
+Reproducibility is mandatory. Containers, version control, documented provenance.  If it cannot be re-run from scratch, it is not engineering.
+
+[**→ Full Portfolio**](https://badibosspy. github.io)

@@ -1,103 +1,89 @@
 ### Badre Abderrahmane Alloul
+**Geospatial Analytics Engineer | Computational Hydrologist**
+*Lyon, France*
 
-**Senior Geospatial Analytics Engineer — Flood Observation, Depth Estimation & Hazard Delivery**
-
-Lyon, France
-
-[![Portfolio](https://img.shields.io/badge/Architecture_Portfolio-000000?style=flat-square&logo=github&logoColor=white)](https://badibosspy.github.io)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077b5?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/badre-abderrahmane-alloul)
-[![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Architecture_Portfolio-000000?style=for-the-badge&logo=github&logoColor=white)](https://badibosspy.github.io)
+[![LinkedIn](https://img.shields.io/badge/Connect-0077b5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
+[![Email](https://img.shields.io/badge/Collaborate-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
 
 ---
 
-I build production flood analytics. I turn SAR satellite observations, terrain data, and hydrological models into flood extent and depth outputs — tested, validated, and shipped under operational time pressure.
+I build production geospatial systems for flood, climate, and environmental analytics. I take satellite observations, hydrological models, and terrain data from research prototype to tested, operational output — shipped under time pressure, documented for third-party scrutiny.
 
-6 years doing this across catastrophe risk (Lloyd's of London, Munich Re via REOR20 AG), national research (INRAe, ENGIE/CNR), and dam infrastructure (ANBT — National Dams Agency). Co-developed SAR flood mapping pipelines with Google and ESA for near-real-time disaster response. Validated modelled flood outputs against ICEYE SAR observations on real European events — Rhine-Moselle, Thessaly, Emilia-Romagna, Pas-de-Calais.
+6 years across catastrophe risk (Lloyd's of London, Munich Re via REOR20 AG), national research (INRAe, ENGIE/CNR), energy infrastructure (4 GW hydropower, 19-dam cascade), and water resource planning (ANBT — National Dams Agency). Co-developed SAR flood mapping pipelines with Google and ESA. Shipped flood analytics, climate risk models, electrification tools, and hazard platforms across Europe, North Africa, the Middle East, and West Africa (World Bank/ESMAP).
 
-End-to-end: from event detection and multi-source data fusion, through depth estimation and uncertainty quantification, to GeoTIFF/GeoPackage deliverables with documented confidence and known limitations.
+End-to-end: from satellite data ingestion and multi-source fusion, through hydrological simulation and machine learning, to validated geospatial deliverables — GeoTIFF/COG, GeoPackage, STAC catalogs, PostGIS APIs, and decision dashboards.
 
 ---
 
-### Flood Analytics System Architecture
+### System Architecture
 
-This is the system I build and operate — from event trigger to validated deliverable.
+Core pattern: integrate earth observation data with physics-based simulation and data-driven ML, validate rigorously, deliver through cloud-native formats and APIs.
 
 ```mermaid
 flowchart TD
-    subgraph EVENT ["EVENT LIFECYCLE"]
-        ACT["Activation & Filtering"]
-        PEAK["Peak & End-of-Event Logic"]
+    subgraph L1 ["I · DATA INGESTION"]
+        A1[("SAR & Optical<br>Sentinel-1/2 · Landsat")]
+        A2[("Climate & Reanalysis<br>ERA5 · CMIP6 · CORDEX")]
+        A3[("In-Situ & Terrain<br>Gauge · DEM · Land Cover")]
     end
 
-    subgraph OBS ["OBSERVATION SOURCES"]
-        SAR["SAR Acquisitions<br>Sentinel-1 · X-band"]
-        OPT["Optical & Spectral<br>Sentinel-2 · Landsat"]
-        AUX["Gauge · Telemetry<br>ERA5 Reanalysis"]
-        DEM["Terrain Models<br>FABDEM · EU-DEM"]
+    subgraph L2 ["II · ANALYTICS KERNEL"]
+        direction LR
+        B1["Geospatial ETL & Fusion<br>GDAL · Rasterio · GeoPandas"]
+        B2["Hydrological Simulation<br>TELEMAC-2D · HAND · FFA"]
+        B3["Machine Learning<br>Classification · Forecasting"]
+        B1 --> B2
+        B2 <--> B3
     end
 
-    subgraph CORE ["FLOOD ANALYTICS"]
-        DET["SAR Flood Detection<br>Calibration · Change Detection"]
-        FUSE["Multi-Source Fusion<br>SAR + Optical + Gauge"]
-        EXT["Extent Extraction<br>Vectorization · Simplification"]
-        DEP["Depth Estimation<br>HAND · 2D Solvers · FFA"]
-        UQ["Uncertainty & Confidence<br>Quality Tiers · Limitations"]
+    subgraph L3 ["III · VALIDATION & COMPUTE"]
+        C1["Accuracy & Uncertainty<br>CSI · POD · FAR · Sobol"]
+        C2["Distributed Processing<br>Dask · xarray · SLURM HPC"]
     end
 
-    subgraph QA ["VALIDATION & RELEASE"]
-        MET["Accuracy Assessment<br>CSI · POD · FAR · BIAS"]
-        ACC["Acceptance Criteria<br>Regression · Failure Modes"]
-        REL["Release Gate"]
+    subgraph L4 ["IV · OPERATIONAL DELIVERY"]
+        D1["Geospatial Formats<br>COG · GeoPackage · Zarr · STAC"]
+        D2["APIs & Decision Support<br>FastAPI · PostGIS · WMS/WFS"]
     end
 
-    subgraph SHIP ["CUSTOMER DELIVERABLES"]
-        R1["Depth Rasters<br>GeoTIFF / COG"]
-        R2["Extent Vectors<br>GeoPackage / GeoJSON"]
-        R3["Metadata & Release Notes<br>STAC · Confidence · Limitations"]
-    end
+    A1 & A2 & A3 -->|STAC / ETL| B1
+    B3 -->|Validated State| C1
+    C1 <--> C2
+    C2 -->|Tested Output| D1 & D2
 
-    ACT -->|triggers| DET
-    SAR --> DET
-    DET --> FUSE
-    OPT --> FUSE
-    AUX --> FUSE
-    FUSE --> EXT --> DEP
-    DEM --> DEP
-    DEP --> UQ
-    UQ --> MET --> ACC --> REL
-    PEAK --> REL
-    REL -->|ship| R1 & R2 & R3
-    REL -.->|refine| FUSE
+    style L2 fill:#0d1117,stroke:#00d4aa,stroke-width:2px,color:#fff
+    style C1 stroke:#d2a8ff,stroke-width:2px
 ```
 
 ---
 
-### What I Ship
+### What I Build
 
-#### SAR Flood Detection & Multi-Source Fusion
+#### Flood & Hazard Analytics
 
-Automated flood extent extraction from SAR imagery (Sentinel-1, X-band): calibration to sigma-nought, speckle filtering, Otsu thresholding, change detection against pre-event baselines. Fuse SAR with optical (Sentinel-2 NDVI/NDWI), gauge telemetry, and ERA5 reanalysis to produce consistent extent outputs in cloud cover, darkness, and mixed conditions. Shipped at REOR20 AG for Google/ESA disaster response; at INRAe for 10 m flood damage classification across field campaigns.
+SAR-based flood extent extraction (Sentinel-1, X-band): calibration, speckle filtering, change detection against pre-event baselines. Multi-source fusion (SAR + optical + gauge) for consistent extent outputs under cloud cover and darkness. Flood depth estimation via HAND and 2D hydraulic solvers (TELEMAC-2D, Anuga). Return-period inundation mapping (T10–T500) from GEV/L-moment flood frequency analysis. Flood damage classification from Sentinel-2 spectral indices at 10 m resolution. Pixel-level validation (CSI, POD, FAR) against SAR observations on real flood events. Documented failure modes and acceptance criteria for each output tier.
 
-#### Depth Estimation & Return-Period Mapping
+#### Climate Data Engineering
 
-HAND-based depth computation validated against USGS 3DEP. 2D hydraulic simulation with TELEMAC-2D and Anuga (shallow-water solvers, unstructured meshes, Manning parameterization). Flood frequency analysis (GEV, Gumbel, L-moments) for T10–T500 return-period inundation maps forced with ERA5 and E-OBS precipitation. Depth validated at gauge locations: Koblenz Rhine gauge residual within 5.9% of observed stage.
+Multi-TB climate data processing (ERA5, CMIP6, CORDEX) with CDO/NCO, xarray, and Dask on SLURM HPC clusters. Bias correction (quantile mapping), regridding, statistical downscaling — CF-compliant NetCDF and Zarr outputs. Climate projection analysis (SSP2-4.5, SSP5-8.5) for infrastructure risk and adaptation planning. Automated ingestion from Copernicus, Theia, and IGN APIs via STAC catalogs. Served climate risk layers to institutional clients through FastAPI/PostGIS endpoints.
 
-#### Validation & Acceptance Criteria
+#### Production Geospatial Software
 
-Pixel-level accuracy assessment — CSI, POD, FAR, BIAS — comparing modelled extents to SAR-observed inundation across multiple events. Spatial error decomposition by land cover and terrain type (urban fringe double-bounce, tributary under-detection, flat terrain over-prediction). Documented failure modes, known limitations, and explicit acceptance criteria for each output. Performed at REOR20 AG against ICEYE SAR observations: Rhine-Moselle, Thessaly, Emilia-Romagna, Pas-de-Calais.
+Python libraries with OOP architecture, pytest coverage, and Pydantic validation. QGIS plugins (PyQGIS) deployed to 15+ field users with bilingual documentation and training. FastAPI services backed by PostGIS with GiST indexing — sub-second spatial queries on 10M+ features. Cloud-native deliverables: COG, GeoPackage, GeoParquet, Zarr, STAC metadata, ISO 19115. Docker containerization, CI/CD (GitLab CI, GitHub Actions), SLURM HPC orchestration (500+ parallel jobs). First published Docker image for TELEMAC-2D/Gmsh.
 
-#### Production Geospatial Delivery
+#### Energy & Infrastructure Analytics
 
-GeoTIFF/COG depth rasters. GeoPackage/GeoJSON extent vectors. STAC catalogs and ISO 19115 metadata. CF-compliant NetCDF and Zarr for climate data. PostGIS backends with GiST indexing (10M+ features, sub-second queries). WMS/WFS endpoints via FastAPI. Dask/xarray pipelines for TB-scale processing. Docker, CI/CD, SLURM HPC (500+ parallel jobs). Everything tested with pytest, validated with Pydantic.
+Hydropower inflow forecasting (XGBoost-LSTM, 1–90 day horizons) for a 19-dam cascade, 4 GW portfolio. Walk-forward temporal validation with MAE/RMSE decomposition by season and catchment. CMIP6 climate impact assessment on hydropower production across multiple river basins. Least-cost electrification modeling (OnSSET) for 50+ off-grid communities in Benin (World Bank/ESMAP) — PV, mini-grid, and hybrid scenarios with LCOE optimization. Renewable site suitability analysis across 5,000+ candidates using multi-criteria spatial analysis. Stakeholder dashboards (Power BI, Leaflet) connected to PostGIS for operational decision-support.
 
 ---
 
 ### How I Work
 
-- **Ship in small increments.** Finish over start. Limit work in progress.
-- **Own what I ship.** Observable systems, clear runbooks, calm operations — not heroics.
-- **Make trade-offs explicit.** Document what "good enough" means and why. Known limitations are part of the output.
-- **Raise the system.** Turn recurring pain into defaults others adopt: test datasets, validation tools, pipelines, analysis templates.
+- **Ship tested code, not notebooks.** Libraries, APIs, containerized pipelines — reproducible from scratch by a third party.
+- **Own what I ship.** Observable systems, clear documentation, calm operations.
+- **State limitations explicitly.** Every output documents what it covers and what it does not.
+- **Turn recurring work into reusable tools.** Libraries, plugins, pipelines, templates that others adopt.
 
 ---
 
@@ -105,12 +91,14 @@ GeoTIFF/COG depth rasters. GeoPackage/GeoJSON extent vectors. STAC catalogs and 
 
 | Domain | Capabilities |
 |---|---|
-| **Flood & Hydrology** | Flood extent/depth mapping · Flood frequency analysis (GEV, Gumbel, L-moments) · Return-period mapping (T10–T500) · HAND computation · SCS-CN runoff · HEC-HMS · TELEMAC-2D · Wflow-SBM · DEM conditioning · Watershed delineation |
-| **SAR & Remote Sensing** | Sentinel-1 SAR flood detection · Sentinel-2 optical classification · Spectral indices (NDVI, NDWI, NBR) · Multi-source data fusion (SAR + optical + gauge) · Google Earth Engine |
-| **Python (Production)** | OOP library design · pytest · Pydantic validation · FastAPI · Numba JIT · Structured logging · Failure handling · Reproducible evaluation (confusion matrices, precision/recall/F1, calibration curves) |
-| **Geospatial Formats** | GeoTIFF / COG · GeoPackage · GeoJSON · GeoParquet · CF-NetCDF · Zarr · STAC catalogs · OGC WMS/WFS · ISO 19115 metadata |
-| **Data Processing** | GDAL/OGR · GeoPandas · Shapely · Rasterio · Fiona · pyproj · xarray · Dask · CDO/NCO (bias correction, regridding) · Raster/vector ETL at TB scale |
-| **Infrastructure** | PostgreSQL/PostGIS (GiST indexing, query optimization) · Docker · CI/CD (GitLab CI, GitHub Actions) · SLURM HPC · AWS / Azure · Apache Airflow |
+| **Flood & Hydrology** | Flood extent/depth mapping · Flood frequency analysis (GEV, L-moments) · Return-period mapping (T10–T500) · HAND · SCS-CN · TELEMAC-2D · Wflow-SBM · HEC-RAS · DEM conditioning · Watershed delineation |
+| **SAR & Remote Sensing** | Sentinel-1 SAR flood detection · Sentinel-2 optical classification · Spectral indices (NDVI, NDWI, NBR) · Multi-source data fusion · Google Earth Engine |
+| **Climate Data** | ERA5 · CMIP6/CORDEX · CDO/NCO (bias correction, regridding) · CF-NetCDF · Zarr · Statistical downscaling · Quantile mapping |
+| **ML & Forecasting** | scikit-learn · XGBoost · PyTorch / TorchGeo · LSTM · Gaussian Process · U-Net segmentation · OnSSET · LCOE optimization |
+| **Python (Production)** | OOP library design · pytest · Pydantic · FastAPI · Numba · PyQGIS plugin dev · Structured logging · Failure handling |
+| **Geospatial Formats** | GeoTIFF / COG · GeoPackage · GeoJSON · GeoParquet · CF-NetCDF · Zarr · STAC catalogs · OGC WMS/WFS · ISO 19115 |
+| **Data Processing** | GDAL/OGR · GeoPandas · Shapely · Rasterio · Fiona · pyproj · xarray · Dask · CDO/NCO · TB-scale raster/vector ETL |
+| **Infrastructure** | PostgreSQL/PostGIS (GiST indexing) · Docker · CI/CD (GitLab CI, GitHub Actions) · SLURM HPC · AWS / Azure · Apache Airflow |
 
 ---
 
@@ -122,7 +110,7 @@ Thesis: calibration and uncertainty quantification of hydraulic models using sur
 **MEng Hydraulic Structures & Water Engineering** — ENSH, Algiers, 2019
 Valedictorian. French Government Excellence Scholarship. Coursework: GIS & spatial analysis, stochastic hydrology, database design.
 
-**Classes Preparatoires (CPGE)** — Ecole Polytechnique d'Algerie, 2016
+**Classes Préparatoires (CPGE)** — École Polytechnique d'Algérie, 2016
 Ranked 2nd / 900 at the National Entrance Exam. Mathematics & Physics.
 
 **Languages:** English (C2) · French (native) · Arabic (native)

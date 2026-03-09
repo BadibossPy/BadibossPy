@@ -1,104 +1,132 @@
 ### Badre Abderrahmane Alloul
-**Geospatial Solutions Architect | Computational Hydrologist**
-*Lyon, France*
 
-[![Portfolio](https://img.shields.io/badge/Architecture_Portfolio-000000?style=for-the-badge&logo=github&logoColor=white)](https://badibosspy.github.io)
-[![LinkedIn](https://img.shields.io/badge/Connect-0077b5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/badre-abderrahmane-alloul)
-[![Email](https://img.shields.io/badge/Collaborate-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
+**Senior Geospatial Analytics Engineer — Flood Observation, Depth Estimation & Hazard Delivery**
 
----
+Lyon, France
 
-### 🌐 The Computational Synthesis
-
-I engineer **production-grade environmental systems**. My work bridges the gap between **Physical Simulation** (PDE solvers) and **Artificial Intelligence** (Stochastic inference).
-
-Most environmental workflows are static and fragmented. I build **persistent, auto-calibrating digital twins**. I design architectures where satellite telemetry forces hydrological models in real-time, scaled via HPC and Cloud infrastructure. I do not just run models; I architect the pipelines that make them operational, reproducible, and scalable.
+[![Portfolio](https://img.shields.io/badge/Architecture_Portfolio-000000?style=flat-square&logo=github&logoColor=white)](https://badibosspy.github.io)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077b5?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/badre-abderrahmane-alloul)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:badrallouldjazairi@gmail.com)
 
 ---
 
-### 📐 System Topology: The Hybrid Architecture
+I build production flood analytics. I turn SAR satellite observations, terrain data, and hydrological models into flood extent and depth outputs — tested, validated, and shipped under operational time pressure.
 
-My core architectural pattern integrates deterministic physics with data-driven ML. This topology handles the velocity of Earth Observation data without compromising physical consistency.
+6 years doing this across catastrophe risk (Lloyd's of London, Munich Re via REOR20 AG), national research (INRAe, ENGIE/CNR), and dam infrastructure (ANBT — National Dams Agency). Co-developed SAR flood mapping pipelines with Google and ESA for near-real-time disaster response. Validated modelled flood outputs against ICEYE SAR observations on real European events — Rhine-Moselle, Thessaly, Emilia-Romagna, Pas-de-Calais.
+
+End-to-end: from event detection and multi-source data fusion, through depth estimation and uncertainty quantification, to GeoTIFF/GeoPackage deliverables with documented confidence and known limitations.
+
+---
+
+### Flood Analytics System Architecture
+
+This is the system I build and operate — from event trigger to validated deliverable.
 
 ```mermaid
 flowchart TD
-    subgraph L1 ["I. DATA INGESTION (STAC/ETL)"]
-        A1[("Sentinel-1/2 (SAR/MSI)")]
-        A2[("ERA5 / CMIP6 Reanalysis")]
-        A3[("In-Situ Telemetry")]
+    subgraph EVENT ["EVENT LIFECYCLE"]
+        ACT["Activation & Filtering"]
+        PEAK["Peak & End-of-Event Logic"]
     end
 
-    subgraph L2 ["II. THE HYBRID KERNEL"]
-        direction LR
-        B1["Latent Space Mapping (TorchGeo)"]
-        B2["Physics-Informed ML (PINNs)"]
-        B3["Numerical Solvers (TELEMAC/Wflow)"]
-        B1 --> B2
-        B2 <--> B3
+    subgraph OBS ["OBSERVATION SOURCES"]
+        SAR["SAR Acquisitions<br>Sentinel-1 · X-band"]
+        OPT["Optical & Spectral<br>Sentinel-2 · Landsat"]
+        AUX["Gauge · Telemetry<br>ERA5 Reanalysis"]
+        DEM["Terrain Models<br>FABDEM · EU-DEM"]
     end
 
-    subgraph L3 ["III. DISTRIBUTED COMPUTE"]
-        C1["Dask / xarray Orchestration"]
-        C2["HPC Kernels (SLURM/MPI)"]
+    subgraph CORE ["FLOOD ANALYTICS"]
+        DET["SAR Flood Detection<br>Calibration · Change Detection"]
+        FUSE["Multi-Source Fusion<br>SAR + Optical + Gauge"]
+        EXT["Extent Extraction<br>Vectorization · Simplification"]
+        DEP["Depth Estimation<br>HAND · 2D Solvers · FFA"]
+        UQ["Uncertainty & Confidence<br>Quality Tiers · Limitations"]
     end
 
-    subgraph L4 ["IV. OPERATIONAL DELIVERY"]
-        D1["Vector Tile Services"]
-        D2["Decision Support Systems"]
+    subgraph QA ["VALIDATION & RELEASE"]
+        MET["Accuracy Assessment<br>CSI · POD · FAR · BIAS"]
+        ACC["Acceptance Criteria<br>Regression · Failure Modes"]
+        REL["Release Gate"]
     end
 
-    A1 & A2 & A3 -->|Normalized Stream| B1
-    B3 -->|State Vector| C1
-    C1 <--> C2
-    C1 -->|Zarr/COG| D1 & D2
+    subgraph SHIP ["CUSTOMER DELIVERABLES"]
+        R1["Depth Rasters<br>GeoTIFF / COG"]
+        R2["Extent Vectors<br>GeoPackage / GeoJSON"]
+        R3["Metadata & Release Notes<br>STAC · Confidence · Limitations"]
+    end
 
-    style L2 fill:#0d1117,stroke:#00d4aa,stroke-width:2px,color:#fff
-    style C1 stroke:#d2a8ff,stroke-width:2px
+    ACT -->|triggers| DET
+    SAR --> DET
+    DET --> FUSE
+    OPT --> FUSE
+    AUX --> FUSE
+    FUSE --> EXT --> DEP
+    DEM --> DEP
+    DEP --> UQ
+    UQ --> MET --> ACC --> REL
+    PEAK --> REL
+    REL -->|ship| R1 & R2 & R3
+    REL -.->|refine| FUSE
 ```
 
 ---
 
-### 🔬 Engineering Focus
+### What I Ship
 
-I operate at the intersection of **Physics, Code, and Infrastructure**:
+#### SAR Flood Detection & Multi-Source Fusion
 
-1.  **Hybrid Modeling (Physics + AI):** Moving beyond black-box ML. I embed physical constraints (mass conservation, momentum) into neural networks to create robust predictors for data-scarce environments.
-2.  **HPC & Cloud Scalability:** Designing "compute-agnostic" pipelines that run seamlessly on on-premise SLURM clusters or AWS Fargate. I optimize for I/O bottlenecks using lazy loading (Dask) and cloud-native formats (Zarr/COG).
-3.  **Automated Calibration:** Replacing manual parameter tuning with differentiable programming. Using gradient-based optimization to auto-calibrate hydrological parameters (Manning’s *n*, conductivity) against real-time observation.
+Automated flood extent extraction from SAR imagery (Sentinel-1, X-band): calibration to sigma-nought, speckle filtering, Otsu thresholding, change detection against pre-event baselines. Fuse SAR with optical (Sentinel-2 NDVI/NDWI), gauge telemetry, and ERA5 reanalysis to produce consistent extent outputs in cloud cover, darkness, and mixed conditions. Shipped at REOR20 AG for Google/ESA disaster response; at INRAe for 10 m flood damage classification across field campaigns.
 
----
+#### Depth Estimation & Return-Period Mapping
 
-### 🔧 Technological Arsenal
+HAND-based depth computation validated against USGS 3DEP. 2D hydraulic simulation with TELEMAC-2D and Anuga (shallow-water solvers, unstructured meshes, Manning parameterization). Flood frequency analysis (GEV, Gumbel, L-moments) for T10–T500 return-period inundation maps forced with ERA5 and E-OBS precipitation. Depth validated at gauge locations: Koblenz Rhine gauge residual within 5.9% of observed stage.
 
-#### 🌍 Geospatial Core
-*The foundational layer for spatial manipulation.*
-![GDAL](https://img.shields.io/badge/GDAL/OGR-C++_Bindings-00d4aa?style=flat-square)
-![Rasterio](https://img.shields.io/badge/Rasterio/Shapely-Low_Level_Ops-00d4aa?style=flat-square)
-![PostGIS](https://img.shields.io/badge/PostGIS-Spatial_SQL_Optimization-336791?style=flat-square&logo=postgresql&logoColor=white)
-![QGIS](https://img.shields.io/badge/PyQGIS-Plugin_Dev-00d4aa?style=flat-square&logo=qgis&logoColor=white)
+#### Validation & Acceptance Criteria
 
-#### 🌊 Simulation & Physics
-*Deterministic solvers for fluid dynamics and hydrology.*
-![Solvers](https://img.shields.io/badge/Solvers-TELEMAC_2D_|_Wflow_SBM_|_HEC_RAS-000000?style=flat-square)
-![Methodology](https://img.shields.io/badge/Methods-Finite_Volume_|_Mesh_Generation_|_Boundary_Conditions-000000?style=flat-square)
+Pixel-level accuracy assessment — CSI, POD, FAR, BIAS — comparing modelled extents to SAR-observed inundation across multiple events. Spatial error decomposition by land cover and terrain type (urban fringe double-bounce, tributary under-detection, flat terrain over-prediction). Documented failure modes, known limitations, and explicit acceptance criteria for each output. Performed at REOR20 AG against ICEYE SAR observations: Rhine-Moselle, Thessaly, Emilia-Romagna, Pas-de-Calais.
 
-#### 🤖 Intelligence & Compute
-*Stochastic modeling and distributed processing.*
-![Python](https://img.shields.io/badge/Python-Scientific_Stack-3776AB?style=flat-square&logo=python&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-TorchGeo_|_DeepLabv3+-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![Scale](https://img.shields.io/badge/Scale-xarray_|_Dask_|_Zarr-563D7C?style=flat-square&logo=dask&logoColor=white)
+#### Production Geospatial Delivery
 
-#### ☁️ Infrastructure & DevOps
-*Reproducibility and deployment.*
-![Docker](https://img.shields.io/badge/Containerization-Docker_|_Singularity-2496ED?style=flat-square&logo=docker&logoColor=white)
-![Cloud](https://img.shields.io/badge/Cloud-AWS_|_BigQuery_|_SLURM-232F3E?style=flat-square&logo=amazonwebservices&logoColor=white)
+GeoTIFF/COG depth rasters. GeoPackage/GeoJSON extent vectors. STAC catalogs and ISO 19115 metadata. CF-compliant NetCDF and Zarr for climate data. PostGIS backends with GiST indexing (10M+ features, sub-second queries). WMS/WFS endpoints via FastAPI. Dask/xarray pipelines for TB-scale processing. Docker, CI/CD, SLURM HPC (500+ parallel jobs). Everything tested with pytest, validated with Pydantic.
 
 ---
 
-### 🎨 Philosophy
+### How I Work
 
-> *"Code is the modern notation for physical law."*
+- **Ship in small increments.** Finish over start. Limit work in progress.
+- **Own what I ship.** Observable systems, clear runbooks, calm operations — not heroics.
+- **Make trade-offs explicit.** Document what "good enough" means and why. Known limitations are part of the output.
+- **Raise the system.** Turn recurring pain into defaults others adopt: test datasets, validation tools, pipelines, analysis templates.
 
-I advocate for **Open Science** as a strict engineering requirement. Environmental models must be version-controlled, containerized, and documented to withstand scrutiny. If it cannot be re-run from scratch by a third party, it is not science—it is an anecdote.
+---
 
-[**Explore Architecture Portfolio →**](https://badibosspy.github.io)
+### Technical Stack
+
+| Domain | Capabilities |
+|---|---|
+| **Flood & Hydrology** | Flood extent/depth mapping · Flood frequency analysis (GEV, Gumbel, L-moments) · Return-period mapping (T10–T500) · HAND computation · SCS-CN runoff · HEC-HMS · TELEMAC-2D · Wflow-SBM · DEM conditioning · Watershed delineation |
+| **SAR & Remote Sensing** | Sentinel-1 SAR flood detection · Sentinel-2 optical classification · Spectral indices (NDVI, NDWI, NBR) · Multi-source data fusion (SAR + optical + gauge) · Google Earth Engine |
+| **Python (Production)** | OOP library design · pytest · Pydantic validation · FastAPI · Numba JIT · Structured logging · Failure handling · Reproducible evaluation (confusion matrices, precision/recall/F1, calibration curves) |
+| **Geospatial Formats** | GeoTIFF / COG · GeoPackage · GeoJSON · GeoParquet · CF-NetCDF · Zarr · STAC catalogs · OGC WMS/WFS · ISO 19115 metadata |
+| **Data Processing** | GDAL/OGR · GeoPandas · Shapely · Rasterio · Fiona · pyproj · xarray · Dask · CDO/NCO (bias correction, regridding) · Raster/vector ETL at TB scale |
+| **Infrastructure** | PostgreSQL/PostGIS (GiST indexing, query optimization) · Docker · CI/CD (GitLab CI, GitHub Actions) · SLURM HPC · AWS / Azure · Apache Airflow |
+
+---
+
+### Background
+
+**MSc Numerical Modeling & Hydraulic Engineering** — Grenoble INP–ENSE3, 2021
+Thesis: calibration and uncertainty quantification of hydraulic models using surrogate methods (Kriging, polynomial chaos). Coursework: HPC & numerical simulation, atmospheric science, statistical modeling.
+
+**MEng Hydraulic Structures & Water Engineering** — ENSH, Algiers, 2019
+Valedictorian. French Government Excellence Scholarship. Coursework: GIS & spatial analysis, stochastic hydrology, database design.
+
+**Classes Preparatoires (CPGE)** — Ecole Polytechnique d'Algerie, 2016
+Ranked 2nd / 900 at the National Entrance Exam. Mathematics & Physics.
+
+**Languages:** English (C2) · French (native) · Arabic (native)
+
+---
+
+[**Explore Full Architecture Portfolio →**](https://badibosspy.github.io)
